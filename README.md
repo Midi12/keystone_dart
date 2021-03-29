@@ -1,6 +1,6 @@
 # keystone_dart
 
-A keystone binding writtend in dart.
+A keystone binding written in dart.
 
 It also include a set of classes to help building assembler code and reduce syntax errors (Only Intel syntax implemented yet for builder (29-03-2021)).
 
@@ -65,8 +65,6 @@ If the keystone engine compiled binary is not located in a default search folder
 
 ## TODO
 
-[ ] Complete asm builder helper function with more asm instructions (Intel)
-
-[ ] Add tests
-
-[ ] Add more syntax/architecture asm builder helpers
+* Complete asm builder helper function with more asm instructions (Intel)
+* Add tests
+* Add more syntax/architecture asm builder helpers
