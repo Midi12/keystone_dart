@@ -13,17 +13,16 @@ import 'asm_builder/asm_builder_intel.dart';
 String? keystonePath;
 
 class KeystoneException implements Exception {
-  String? _message;
+  late String _message;
   final int _code;
 
   KeystoneException(this._code) {
-    // _code = code;
     var ptr = KsStrError(_code);
     _message = ptr.toDartString();
   }
 
   int get code => _code;
-  String get message => _message ?? '';
+  String get message => _message;
 
   @override
   String toString() => 'KeystoneException : $_code  ($_message)';

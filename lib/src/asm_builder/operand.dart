@@ -13,3 +13,7 @@ class RegisterOperand extends Operand {
 class ImmediateValueOperand extends Operand {
   const ImmediateValueOperand(int value) : super(value);
 }
+
+class MemoryOperand extends Operand {
+  const MemoryOperand(int address) : super(address);
+}

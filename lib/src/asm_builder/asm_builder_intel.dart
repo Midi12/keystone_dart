@@ -1,6 +1,6 @@
-import 'package:keystone_dart/src/asm_builder/asm_builder_base.dart';
-import 'package:keystone_dart/src/asm_builder/instruction.dart';
-import 'package:keystone_dart/src/asm_builder/operand.dart';
+import 'asm_builder_base.dart';
+import 'instruction.dart';
+import 'operand.dart';
 
 class OneOperandInstructionIntel extends Instruction {
   final Operand _op1;

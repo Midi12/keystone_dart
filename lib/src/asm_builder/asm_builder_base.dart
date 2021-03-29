@@ -1,4 +1,4 @@
-import 'package:keystone_dart/src/asm_builder/instruction.dart';
+import 'instruction.dart';
 
 import 'operand.dart';
 
