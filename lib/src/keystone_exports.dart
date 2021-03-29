@@ -118,11 +118,11 @@ int KsClose(int engine) {
   return _pfnKsClose!(engine);
 }
 
-typedef KsFree_t = Void Function(Pointer);
-typedef KsFree_d = void Function(Pointer);
+typedef KsFree_t = Void Function(IntPtr);
+typedef KsFree_d = void Function(int);
 KsFree_d? _pfnKsFree;
 
-void KsFree(Pointer buffer) {
+void KsFree(int buffer) {
   _pfnKsFree ??= _keystone?.lookupFunction<KsFree_t, KsFree_d>(_exportMap!['ks_free']!);
   return _pfnKsFree!(buffer);
 }

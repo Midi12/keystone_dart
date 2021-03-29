@@ -19,3 +19,4 @@ const r15 = RegisterOperand('r15');
 const rip = RegisterOperand('rip');
 
 ImmediateValueOperand imm(int value) => ImmediateValueOperand(value);
+MemoryOperand mem(int address) => MemoryOperand(address);
