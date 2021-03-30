@@ -56,7 +56,7 @@ class Keystone implements IDisposable {
       throw Exception('Version mismatch');
     }
 
-    _engine = calloc.allocate(sizeOf<IntPtr>());
+    _engine = calloc.allocate<IntPtr>(sizeOf<IntPtr>());
 
     var err = KsOpen(architecture, mode, _engine);
     if (err != KS_ERR_OK) {
@@ -132,8 +132,9 @@ class Keystone implements IDisposable {
     var data = calloc.allocate<IntPtr>(sizeOf<IntPtr>());
     var size = calloc.allocate<IntPtr>(sizeOf<IntPtr>());
     var statements = calloc.allocate<IntPtr>(sizeOf<IntPtr>());
+    var code = asm.toNativeUtf8();
 
-    var err = KsAsm(_engine.value, asm.toNativeUtf8(), baseAddress, data, size, statements);
+    var err = KsAsm(_engine.value, code, baseAddress, data, size, statements);
     if (err != KS_ERR_OK) {
       throw KeystoneException(err);
     }
@@ -162,6 +163,7 @@ class Keystone implements IDisposable {
 
     KsFree(data.value);
 
+    calloc.free(code);
     calloc.free(statements);
     calloc.free(size);
     calloc.free(data);

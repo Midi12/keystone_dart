@@ -151,7 +151,7 @@ KsArchSupported_d? _pfnKsArchSupported;
 
 bool KsArchSupported(int architecture) {
   _pfnKsArchSupported ??= _keystone?.lookupFunction<KsArchSupported_t, KsArchSupported_d>(_exportMap!['ks_arch_supported']!);
-  return _pfnKsArchSupported!(architecture) != 0;
+  return _pfnKsArchSupported!(architecture) == 1;
 }
 
 typedef KsOption_t = Uint32 Function(IntPtr, Int32, IntPtr);
