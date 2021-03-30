@@ -141,7 +141,7 @@ class Keystone implements IDisposable {
     );
 
     KsFree(data.value);
-    
+
     calloc.free(statements);
     calloc.free(size);
     calloc.free(data);
