@@ -6,14 +6,14 @@ abstract class Operand {
   String format() => '$value';
 }
 
-class RegisterOperand extends Operand {
+abstract class RegisterOperand extends Operand {
   const RegisterOperand(String name) : super(name);
 }
 
-class ImmediateValueOperand extends Operand {
+abstract class ImmediateValueOperand extends Operand {
   const ImmediateValueOperand(int value) : super(value);
 }
 
-class MemoryOperand extends Operand {
-  const MemoryOperand(int address) : super(address);
+abstract class MemoryValueOperand extends Operand {
+  const MemoryValueOperand(int address) : super(address);
 }

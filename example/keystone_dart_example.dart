@@ -1,4 +1,5 @@
 import 'package:keystone_dart/keystone_dart.dart' as ks;
+import 'package:keystone_dart/src/asm_builder/asm_builder_intel.dart' as intel;
 
 void main() {
   // setup library path (must have ending slash)
@@ -23,9 +24,9 @@ void main() {
     var bytes = res.assembly.map((byte) => byte.toRadixString(16)).join(' ');
     print('assembly for $code -> $bytes');
 
-    engine.builder!.push(ks.rax);
-    engine.builder!.mov(ks.rax, ks.imm(1));
-    engine.builder!.pop(ks.rax);
+    engine.builder!.push(intel.rax);
+    engine.builder!.mov(intel.rax, intel.imm(1));
+    engine.builder!.pop(intel.rax);
     var res2 = engine.assemble();
 
     print('assembly 2 valid ? ${res2.valid}');

@@ -13,8 +13,6 @@ export 'src/sparc_const.dart';
 export 'src/systemz_const.dart';
 export 'src/x86_const.dart';
 
-export 'src/asm_builder/operand_const.dart';
-
 export 'src/keystone_const.dart';
 export 'src/keystone.dart';
 
