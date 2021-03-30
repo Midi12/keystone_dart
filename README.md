@@ -67,6 +67,6 @@ If the keystone engine compiled binary is not located in a default search folder
 
 ## TODO
 
-* Complete asm builder helper function with more asm instructions (Intel)
+* ~~Complete asm builder helper function with more asm instructions (Intel)~~
 * Add tests
 * Add more syntax/architecture asm builder helpers

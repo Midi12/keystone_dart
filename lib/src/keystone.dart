@@ -8,7 +8,7 @@ import 'keystone_exports.dart';
 import 'keystone_const.dart';
 
 import 'asm_builder/asm_builder_base.dart';
-import 'asm_builder/asm_builder_intel.dart';
+import 'asm_builder/asm_builder_intel.dart' show AsmBuilderIntel;
 
 String? keystonePath;
 
