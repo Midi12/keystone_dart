@@ -57,14 +57,22 @@ class ImmediateValueOperandIntel extends ImmediateValueOperand {
 }
 
 class MemoryValueOperandIntel extends MemoryValueOperand {
-  const MemoryValueOperandIntel(int address) : super(address);
+  const MemoryValueOperandIntel(dynamic item) : super(item);
+
+  @override
+  String format() => '$value';
+}
+
+class DereferencedOperandIntel extends DereferencedOperand {
+  const DereferencedOperandIntel(Operand item) : super(item);
 
   @override
   String format() => '[$value]';
 }
 
 ImmediateValueOperand imm(int value) => ImmediateValueOperandIntel(value);
-MemoryValueOperand mem(int address) => MemoryValueOperandIntel(address);
+MemoryValueOperand mem(dynamic item) => MemoryValueOperandIntel(item);
+DereferencedOperand deref(Operand item) => DereferencedOperandIntel(item);
 
 class ZeroOperandInstructionIntel extends Instruction {
   const ZeroOperandInstructionIntel(String name) : super(name);
