@@ -1,6 +1,7 @@
-import 'package:keystone_dart/keystone_dart.dart' as ks;
 import 'package:test/test.dart';
 
+import 'keystone_bindings_test.dart' as bindings;
+
 void main() {
-  group('A group of tests', () {});
+  group('Binding tests', bindings.main);
 }
