@@ -67,15 +67,15 @@ bool ensureLoaded(String? libraryPath) {
 
   switch (Platform.operatingSystem) {
     case windows:
-      libPath = Platform.script.resolve('${libPath}keystone.dll').toFilePath();
+      libPath = Directory.current.uri.resolve('${libPath}keystone.dll').toFilePath();
       _exportMap = WindowsExportMap();
       break;
     case linux:
-      libPath = Platform.script.resolve('${libPath}keystone.so').toFilePath();
+      libPath = Directory.current.uri.resolve('${libPath}keystone.so').toFilePath();
       _exportMap = LinuxExportMap();
       break;
     case macos:
-      libPath = Platform.script.resolve('${libPath}keystone.dylib').toFilePath();
+      libPath = Directory.current.uri.resolve('${libPath}keystone.dylib').toFilePath();
       _exportMap = MacosExportMap();
       break;
     default:

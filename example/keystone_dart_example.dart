@@ -1,9 +1,13 @@
+import 'dart:io' show Platform;
+
 import 'package:keystone_dart/keystone_dart.dart' as ks;
 import 'package:keystone_dart/src/asm_builder/asm_builder_intel.dart' as intel;
 
 void main() {
+  print(Platform.script);
+
   // setup library path (must have ending slash)
-  ks.keystonePath = '../dependencies/keystone/x64/';
+  ks.keystonePath = 'dependencies/keystone/x64/';
 
   ks.Keystone? engine;
 
