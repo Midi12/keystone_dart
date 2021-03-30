@@ -52,6 +52,10 @@ class Keystone implements IDisposable {
       throw Exception('Unsupported operating system');
     }
 
+    if (ksMakeVersion(KS_VERSION_MAJOR, KS_VERSION_MINOR) != version()) {
+      throw Exception('Version mismatch');
+    }
+
     _engine = calloc.allocate(sizeOf<IntPtr>());
 
     var err = KsOpen(architecture, mode, _engine);
@@ -72,6 +76,22 @@ class Keystone implements IDisposable {
 
     calloc.free(_engine);
     _engine = nullptr;
+  }
+
+  int version() {
+    var major = calloc.allocate<Uint32>(sizeOf<Uint32>());
+    var minor = calloc.allocate<Uint32>(sizeOf<Uint32>());
+
+    var combined = KsVersion(major, minor);
+
+    calloc.free(minor);
+    calloc.free(major);
+
+    return combined;
+  }
+
+  int lastError() {
+    return KsErrno(_engine.value);
   }
 
   bool setOption(int type, int value) {
