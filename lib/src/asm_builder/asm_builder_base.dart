@@ -19,6 +19,11 @@ abstract class AsmBuilderBase {
     return this;
   }
 
+  AsmBuilderBase appendRaw(String raw) {
+    _asmString += '$raw;';
+    return this;
+  }
+
   AsmBuilderBase push(Operand op);
   AsmBuilderBase mov(Operand op1, Operand op2);
   AsmBuilderBase pop(Operand op);

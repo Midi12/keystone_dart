@@ -26,7 +26,11 @@ void main() {
 
     engine.builder!.push(intel.rax);
     engine.builder!.mov(intel.rax, intel.imm(1));
+    engine.builder!.append(intel.TwoOperandsInstructionIntel('sub', intel.eax, intel.imm(1)));
     engine.builder!.pop(intel.rax);
+    engine.builder!.nop();
+    engine.builder!.append(intel.ZeroOperandInstructionIntel('nop'));
+    engine.builder!.appendRaw('ret');
     var res2 = engine.assemble();
 
     print('assembly 2 valid ? ${res2.valid}');
