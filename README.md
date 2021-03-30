@@ -15,11 +15,11 @@ var res = engine.assembleRaw(code);
 * Assemble built assembler code
 ```dart
 // push rax
-engine.builder!.push(ks.rax);
+engine.builder!.push(intel.rax);
 // mov rax, 1
-engine.builder!.mov(ks.rax, ks.imm(1));
+engine.builder!.mov(intel.rax, intel.imm(1));
 // pop rax
-engine.builder!.pop(ks.rax);
+engine.builder!.pop(intel.rax);
 var res = engine.assemble();
 ```
 
