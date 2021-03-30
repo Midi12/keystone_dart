@@ -15,5 +15,9 @@ abstract class ImmediateValueOperand extends Operand {
 }
 
 abstract class MemoryValueOperand extends Operand {
-  const MemoryValueOperand(int address) : super(address);
+  const MemoryValueOperand(dynamic item) : super(item);
+}
+
+abstract class DereferencedOperand extends Operand {
+  const DereferencedOperand(Operand item) : super(item);
 }
