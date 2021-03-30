@@ -57,6 +57,8 @@ void main() {
 }
 ```
 
+See `example/keystone_dart_example.dart` for a complete example.
+
 ## Prerequisites
 
 Download precompiled Keystone binaries (https://www.keystone-engine.org/download/) or build from source (https://github.com/keystone-engine/keystone).
