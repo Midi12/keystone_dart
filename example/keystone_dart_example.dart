@@ -1,7 +1,6 @@
 import 'dart:io' show Platform;
 
 import 'package:keystone_dart/keystone_dart.dart' as ks;
-import 'package:keystone_dart/src/asm_builder/asm_builder_intel.dart' as intel;
 
 void main() {
   print(Platform.script);
@@ -28,15 +27,13 @@ void main() {
     var bytes = res.assembly.map((byte) => byte.toRadixString(16)).join(' ');
     print('assembly for $code -> $bytes');
 
-    var a = intel.AsmBuilderIntel64();
+    var a = ks.AsmBuilderIntel64();
 
     a.push(a.rax);
     a.mov(a.rax, a.imm(1));
-    a.append(intel.TwoOperandsInstructionIntel('sub', a.eax, a.imm(1)));
     a.mov(a.rbx, a.deref(a.eax));
     a.pop(a.rax);
     a.nop();
-    a.append(intel.ZeroOperandInstructionIntel('nop'));
     a.appendRaw('ret');
     var res2 = engine.assemble(a);
 
