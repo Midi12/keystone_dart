@@ -1,23 +1,23 @@
 import 'instruction.dart';
 
 abstract class AsmBuilderBase {
-  String _asmString = '';
+  List<String> _instructions = [];
 
   AsmBuilderBase();
   
   String build() {
-    return _asmString;
+    return _instructions.join(';');
   }
 
-  void reset() { _asmString = ''; }
+  void reset() { _instructions = []; }
 
   AsmBuilderBase append(Instruction inst) {
-    _asmString += '${inst.format()};';
+    _instructions.add(inst.format());
     return this;
   }
 
   AsmBuilderBase appendRaw(String raw) {
-    _asmString += '$raw;';
+    _instructions.add(raw);
     return this;
   }
 }
