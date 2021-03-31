@@ -70,6 +70,10 @@ class Keystone implements IDisposable {
     _mode = mode;
   }
 
+  int get architecture => _arch;
+  int get mode => _mode;
+  int get syntax => _syntax;
+
   @override
   void dispose() {
     var err = KsClose(_engine.value);
@@ -80,52 +84,6 @@ class Keystone implements IDisposable {
 
     calloc.free(_engine);
     _engine = nullptr;
-  }
-
-  AsmBuilderBase get builder {
-    AsmBuilderBase builder;
-
-    switch (_arch) {
-      case KS_ARCH_ARM:
-      case KS_ARCH_ARM64:
-      case KS_ARCH_EVM:
-      case KS_ARCH_HEXAGON:
-      case KS_ARCH_MIPS:
-      case KS_ARCH_PPC:
-      case KS_ARCH_SPARC:
-      case KS_ARCH_SYSTEMZ:
-        builder = AsmBuilderNone();
-        break;
-      case KS_ARCH_X86:
-        switch (_syntax) {
-          case KS_OPT_SYNTAX_INTEL:
-            switch (_mode) {
-              case KS_MODE_16:
-                builder = AsmBuilderIntel16();
-                break;
-              case KS_MODE_32:
-                builder = AsmBuilderIntel32();
-                break;
-              case KS_MODE_64:
-                builder = AsmBuilderIntel64();
-                break;
-              default:
-                builder = AsmBuilderNone();
-                break;
-            }
-            break;
-          case KS_OPT_SYNTAX_ATT:
-          default:
-            builder = AsmBuilderNone();
-            break;
-        }
-        break;
-      default:
-        builder = AsmBuilderNone();
-        break;
-    }
-
-    return builder;
   }
 
   int version() {

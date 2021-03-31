@@ -28,7 +28,7 @@ void main() {
     var bytes = res.assembly.map((byte) => byte.toRadixString(16)).join(' ');
     print('assembly for $code -> $bytes');
 
-    var a = engine.builder as intel.AsmBuilderIntel64;
+    var a = intel.AsmBuilderIntel64();
 
     a.push(a.rax);
     a.mov(a.rax, a.imm(1));

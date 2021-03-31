@@ -15,7 +15,7 @@ var res = engine.assembleRaw(code);
 * Assemble built assembler code
 ```dart
 // get assembly builder
-var a = engine.builder as intel.AsmBuilderIntel64;
+var a = intel.AsmBuilderIntel64();
 
 // push rax
 a.push(a.rax);
@@ -23,6 +23,8 @@ a.push(a.rax);
 a.mov(a.rax, a.imm(1));
 // pop rax
 a.pop(a.rax);
+
+// assemble code
 var res = engine.assemble(a);
 ```
 
