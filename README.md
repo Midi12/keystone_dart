@@ -14,13 +14,16 @@ var res = engine.assembleRaw(code);
 
 * Assemble built assembler code
 ```dart
+// get assembly builder
+var a = engine.builder as intel.AsmBuilderIntel64;
+
 // push rax
-engine.builder!.push(intel.rax);
+a.push(a.rax);
 // mov rax, 1
-engine.builder!.mov(intel.rax, intel.imm(1));
+a.mov(a.rax, a.imm(1));
 // pop rax
-engine.builder!.pop(intel.rax);
-var res = engine.assemble();
+a.pop(a.rax);
+var res = engine.assemble(a);
 ```
 
 * Minimal sample

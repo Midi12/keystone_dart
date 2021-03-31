@@ -8,7 +8,8 @@ import 'keystone_exports.dart';
 import 'keystone_const.dart';
 
 import 'asm_builder/asm_builder_base.dart';
-import 'asm_builder/asm_builder_intel.dart' show AsmBuilderIntel;
+import 'asm_builder/asm_builder_none.dart' show AsmBuilderNone;
+import 'asm_builder/asm_builder_intel.dart' show AsmBuilderIntel16, AsmBuilderIntel32, AsmBuilderIntel64;
 
 String? keystonePath;
 
@@ -45,7 +46,9 @@ class AssemblerResult {
 
 class Keystone implements IDisposable {
   Pointer<IntPtr> _engine = nullptr;
-  AsmBuilderBase? _asmBuilder;
+  int _syntax = -1;
+  late final int _arch;
+  late final int _mode;
 
   Keystone(int architecture, int mode) {
     if (!ensureLoaded(keystonePath)) {
@@ -62,9 +65,10 @@ class Keystone implements IDisposable {
     if (err != KS_ERR_OK) {
       throw KeystoneException(err);
     }
-  }
 
-  AsmBuilderBase? get builder => _asmBuilder;
+    _arch = architecture;
+    _mode = mode;
+  }
 
   @override
   void dispose() {
@@ -76,6 +80,52 @@ class Keystone implements IDisposable {
 
     calloc.free(_engine);
     _engine = nullptr;
+  }
+
+  AsmBuilderBase get builder {
+    AsmBuilderBase builder;
+
+    switch (_arch) {
+      case KS_ARCH_ARM:
+      case KS_ARCH_ARM64:
+      case KS_ARCH_EVM:
+      case KS_ARCH_HEXAGON:
+      case KS_ARCH_MIPS:
+      case KS_ARCH_PPC:
+      case KS_ARCH_SPARC:
+      case KS_ARCH_SYSTEMZ:
+        builder = AsmBuilderNone();
+        break;
+      case KS_ARCH_X86:
+        switch (_syntax) {
+          case KS_OPT_SYNTAX_INTEL:
+            switch (_mode) {
+              case KS_MODE_16:
+                builder = AsmBuilderIntel16();
+                break;
+              case KS_MODE_32:
+                builder = AsmBuilderIntel32();
+                break;
+              case KS_MODE_64:
+                builder = AsmBuilderIntel64();
+                break;
+              default:
+                builder = AsmBuilderNone();
+                break;
+            }
+            break;
+          case KS_OPT_SYNTAX_ATT:
+          default:
+            builder = AsmBuilderNone();
+            break;
+        }
+        break;
+      default:
+        builder = AsmBuilderNone();
+        break;
+    }
+
+    return builder;
   }
 
   int version() {
@@ -102,19 +152,7 @@ class Keystone implements IDisposable {
     }
 
     if (type == KS_OPT_SYNTAX) {
-      switch (value) {
-        case KS_OPT_SYNTAX_INTEL:
-          _asmBuilder = AsmBuilderIntel();
-          break;
-        case KS_OPT_SYNTAX_ATT:
-        case KS_OPT_SYNTAX_NASM:
-        case KS_OPT_SYNTAX_MASM:
-        case KS_OPT_SYNTAX_GAS:
-        case KS_OPT_SYNTAX_RADIX16:
-        default:
-          _asmBuilder = null;
-          break;
-      }
+      _syntax = value;
     }
 
     return err == KS_ERR_OK;
@@ -124,8 +162,8 @@ class Keystone implements IDisposable {
     return KsArchSupported(architecture);
   }
 
-  AssemblerResult assemble({ int baseAddress = 0 }) {
-    return assembleRaw(_asmBuilder!.build(), baseAddress: baseAddress);
+  AssemblerResult assemble(AsmBuilderBase builder, { int baseAddress = 0 }) {
+    return assembleRaw(builder.build(), baseAddress: baseAddress);
   }
 
   AssemblerResult assembleRaw(String asm, { int baseAddress = 0 }) {
