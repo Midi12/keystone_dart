@@ -246,55 +246,55 @@ class AsmBuilderIntel extends AsmBuilderBase {
 }
 
 class AsmBuilderIntel16 extends AsmBuilderIntel {
-  RegisterOperand get ax => RegisterOperandIntel('ax');
-  RegisterOperand get bx => RegisterOperandIntel('bx');
-  RegisterOperand get cx => RegisterOperandIntel('cx');
-  RegisterOperand get dx => RegisterOperandIntel('dx');
-  RegisterOperand get bp => RegisterOperandIntel('bp');
-  RegisterOperand get sp => RegisterOperandIntel('sp');
-  RegisterOperand get si => RegisterOperandIntel('si');
-  RegisterOperand get di => RegisterOperandIntel('di');
-  RegisterOperand get ip => RegisterOperandIntel('ip');
+  RegisterOperand get ax => _ax;
+  RegisterOperand get bx => _bx;
+  RegisterOperand get cx => _cx;
+  RegisterOperand get dx => _dx;
+  RegisterOperand get bp => _bp;
+  RegisterOperand get sp => _sp;
+  RegisterOperand get si => _si;
+  RegisterOperand get di => _di;
+  RegisterOperand get ip => _ip;
 
-  RegisterOperand get ah => RegisterOperandIntel('ah');
-  RegisterOperand get bh => RegisterOperandIntel('bh');
-  RegisterOperand get ch => RegisterOperandIntel('ch');
-  RegisterOperand get dh => RegisterOperandIntel('dh');
+  RegisterOperand get ah => _ah;
+  RegisterOperand get bh => _bh;
+  RegisterOperand get ch => _ch;
+  RegisterOperand get dh => _dh;
 
-  RegisterOperand get al => RegisterOperandIntel('al');
-  RegisterOperand get bl => RegisterOperandIntel('bl');
-  RegisterOperand get cl => RegisterOperandIntel('cl');
-  RegisterOperand get dl => RegisterOperandIntel('dl');
+  RegisterOperand get al => _al;
+  RegisterOperand get bl => _bl;
+  RegisterOperand get cl => _cl;
+  RegisterOperand get dl => _dl;
 }
 
 class AsmBuilderIntel32 extends AsmBuilderIntel16 {
-  RegisterOperand get eax => RegisterOperandIntel('eax');
-  RegisterOperand get ebx => RegisterOperandIntel('ebx');
-  RegisterOperand get ecx => RegisterOperandIntel('ecx');
-  RegisterOperand get edx => RegisterOperandIntel('edx');
-  RegisterOperand get ebp => RegisterOperandIntel('ebp');
-  RegisterOperand get esp => RegisterOperandIntel('esp');
-  RegisterOperand get esi => RegisterOperandIntel('esi');
-  RegisterOperand get edi => RegisterOperandIntel('edi');
-  RegisterOperand get eip => RegisterOperandIntel('eip');
+  RegisterOperand get eax => _eax;
+  RegisterOperand get ebx => _ebx;
+  RegisterOperand get ecx => _ecx;
+  RegisterOperand get edx => _edx;
+  RegisterOperand get ebp => _ebp;
+  RegisterOperand get esp => _esp;
+  RegisterOperand get esi => _esi;
+  RegisterOperand get edi => _edi;
+  RegisterOperand get eip => _eip;
 }
 
 class AsmBuilderIntel64 extends AsmBuilderIntel32 {
-  RegisterOperand get rax => RegisterOperandIntel('rax');
-  RegisterOperand get rbx => RegisterOperandIntel('rbx');
-  RegisterOperand get rcx => RegisterOperandIntel('rcx');
-  RegisterOperand get rdx => RegisterOperandIntel('rdx');
-  RegisterOperand get rbp => RegisterOperandIntel('rbp');
-  RegisterOperand get rsp => RegisterOperandIntel('rsp');
-  RegisterOperand get rsi => RegisterOperandIntel('rsi');
-  RegisterOperand get rdi => RegisterOperandIntel('rdi');
-  RegisterOperand get r8 => RegisterOperandIntel('r8');
-  RegisterOperand get r9 => RegisterOperandIntel('r9');
-  RegisterOperand get r10 => RegisterOperandIntel('r10');
-  RegisterOperand get r11 => RegisterOperandIntel('r11');
-  RegisterOperand get r12 => RegisterOperandIntel('r12');
-  RegisterOperand get r13 => RegisterOperandIntel('r13');
-  RegisterOperand get r14 => RegisterOperandIntel('r14');
-  RegisterOperand get r15 => RegisterOperandIntel('r15');
-  RegisterOperand get rip => RegisterOperandIntel('rip');
+  RegisterOperand get rax => _rax;
+  RegisterOperand get rbx => _rbx;
+  RegisterOperand get rcx => _rcx;
+  RegisterOperand get rdx => _rdx;
+  RegisterOperand get rbp => _rbp;
+  RegisterOperand get rsp => _rsp;
+  RegisterOperand get rsi => _rsi;
+  RegisterOperand get rdi => _rdi;
+  RegisterOperand get r8 => _r8;
+  RegisterOperand get r9 => _r9;
+  RegisterOperand get r10 => _r10;
+  RegisterOperand get r11 => _r11;
+  RegisterOperand get r12 => _r12;
+  RegisterOperand get r13 => _r13;
+  RegisterOperand get r14 => _r14;
+  RegisterOperand get r15 => _r15;
+  RegisterOperand get rip => _rip;
 }
