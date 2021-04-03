@@ -58,18 +58,22 @@ class ImmediateValueOperandIntel extends ImmediateValueOperand {
   const ImmediateValueOperandIntel(int value) : super(value);
 }
 
-class MemoryValueOperandIntel extends MemoryValueOperand {
-  const MemoryValueOperandIntel(dynamic item) : super(item);
+// class MemoryValueOperandIntel extends MemoryValueOperand {
+//   const MemoryValueOperandIntel(dynamic item) : super(item);
 
-  @override
-  String format() => '$value';
-}
+//   @override
+//   String format() => '$value';
+// }
 
 class DereferencedOperandIntel extends DereferencedOperand {
   const DereferencedOperandIntel(Operand item) : super(item);
 
   @override
   String format() => '[${value.format()}]';
+}
+
+class LabelOperandIntel extends LabelOperand {
+  const LabelOperandIntel(value) : super(value);
 }
 
 class ZeroOperandInstructionIntel extends Instruction {
@@ -101,8 +105,14 @@ class TwoOperandsInstructionIntel extends Instruction {
 class AsmBuilderIntel extends AsmBuilderBase {
 
   ImmediateValueOperand imm(int value) => ImmediateValueOperandIntel(value);
-  MemoryValueOperand mem(dynamic item) => MemoryValueOperandIntel(item);
+  // MemoryValueOperand mem(dynamic item) => MemoryValueOperandIntel(item);
   DereferencedOperand deref(Operand item) => DereferencedOperandIntel(item);
+  LabelOperand lab(String name) => LabelOperandIntel(name);
+
+  AsmBuilderBase label(LabelOperand name) {
+    appendRaw('${name.format()}:');
+    return this;
+  }
 
   AsmBuilderBase mov(Operand dest, Operand src) {
     append(TwoOperandsInstructionIntel('mov', dest, src));

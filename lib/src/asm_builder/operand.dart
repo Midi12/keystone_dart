@@ -20,4 +20,15 @@ abstract class MemoryValueOperand extends Operand {
 
 abstract class DereferencedOperand extends Operand {
   const DereferencedOperand(Operand item) : super(item);
+
+  @override
+  String format() => throw UnimplementedError();
+}
+
+abstract class LabelOperand extends Operand {
+  const LabelOperand(value) : super(value);
+
+  @override
+  String format() => '$value';
+
 }
