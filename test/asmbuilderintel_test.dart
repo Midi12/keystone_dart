@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:keystone_dart/src/asm_builder/operand.dart';
 import 'package:test/test.dart';
 
 import 'package:keystone_dart/keystone_dart.dart';
