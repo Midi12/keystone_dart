@@ -333,4 +333,14 @@ class AsmBuilderIntel64 extends AsmBuilderIntel32 {
 
   @override
   AsmBuilderBase popa() => throw UnimplementedError();
+
+  AsmBuilderBase pushfq() {
+    append(ZeroOperandInstructionIntel('pushfq'));
+    return this;
+  }
+
+  AsmBuilderBase popfq() {
+    append(ZeroOperandInstructionIntel('pushfq'));
+    return this;
+  }
 }
