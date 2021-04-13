@@ -287,6 +287,26 @@ class AsmBuilderIntel32 extends AsmBuilderIntel16 {
   RegisterOperand get esi => _esi;
   RegisterOperand get edi => _edi;
   RegisterOperand get eip => _eip;
+
+  AsmBuilderBase pusha() {
+    append(ZeroOperandInstructionIntel('pusha'));
+    return this;
+  }
+
+  AsmBuilderBase popa() {
+    append(ZeroOperandInstructionIntel('pusha'));
+    return this;
+  }
+
+  AsmBuilderBase pushf() {
+    append(ZeroOperandInstructionIntel('pushf'));
+    return this;
+  }
+
+  AsmBuilderBase popf() {
+    append(ZeroOperandInstructionIntel('pushf'));
+    return this;
+  }
 }
 
 class AsmBuilderIntel64 extends AsmBuilderIntel32 {
@@ -307,4 +327,10 @@ class AsmBuilderIntel64 extends AsmBuilderIntel32 {
   RegisterOperand get r14 => _r14;
   RegisterOperand get r15 => _r15;
   RegisterOperand get rip => _rip;
+
+  @override
+  AsmBuilderBase pusha() => throw UnimplementedError();
+
+  @override
+  AsmBuilderBase popa() => throw UnimplementedError();
 }
