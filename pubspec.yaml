@@ -1,5 +1,5 @@
 name: keystone_dart
-description: Keystone assembler binding written in Dart
+description: A Keystone engine assembler binding written in Dart using ffi
 version: 1.0.0-dev
 homepage: https://github.com/Midi12/keystone_dart
 repository: https://github.com/Midi12/keystone_dart

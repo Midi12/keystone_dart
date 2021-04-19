@@ -1,10 +1,6 @@
-import 'dart:io' show Platform;
-
 import 'package:keystone_dart/keystone_dart.dart' as ks;
 
 void main() {
-  print(Platform.script);
-
   // setup library path (must have ending slash)
   ks.keystonePath = 'dependencies/keystone/x64/';
 
@@ -41,7 +37,6 @@ void main() {
 
     var bytes2 = res2.assembly.map((byte) => byte.toRadixString(16)).join(' ');
     print('assembly for built asm -> $bytes2');
-
   } on ks.KeystoneException catch (e) {
     print('Error $e');
   } finally {

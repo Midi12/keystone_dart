@@ -22,7 +22,8 @@ void main() {
   // test('MemoryValueOperandIntel', () {});
 
   test('DereferencedOperandIntel', () {
-    var deref_imm = DereferencedOperandIntel(ImmediateValueOperandIntel(0xFFFF));
+    var deref_imm =
+        DereferencedOperandIntel(ImmediateValueOperandIntel(0xFFFF));
 
     expect(deref_imm.format(), '[65535]');
     expect(deref_imm, TypeMatcher<DereferencedOperandIntel>());
@@ -44,19 +45,22 @@ void main() {
   });
 
   test('OneOperandInstructionIntel', () {
-    var one_op_inst_imm = OneOperandInstructionIntel('push', ImmediateValueOperandIntel(1234));
+    var one_op_inst_imm =
+        OneOperandInstructionIntel('push', ImmediateValueOperandIntel(1234));
 
     expect(one_op_inst_imm.name, 'push');
     expect(one_op_inst_imm.format(), 'push 1234');
     expect(one_op_inst_imm, TypeMatcher<OneOperandInstructionIntel>());
 
-    var one_op_inst_reg = OneOperandInstructionIntel('push', RegisterOperandIntel('rax'));
+    var one_op_inst_reg =
+        OneOperandInstructionIntel('push', RegisterOperandIntel('rax'));
 
     expect(one_op_inst_reg.name, 'push');
     expect(one_op_inst_reg.format(), 'push rax');
     expect(one_op_inst_reg, TypeMatcher<OneOperandInstructionIntel>());
 
-    var one_op_inst_deref = OneOperandInstructionIntel('lea', DereferencedOperandIntel(RegisterOperandIntel('rax')));
+    var one_op_inst_deref = OneOperandInstructionIntel(
+        'lea', DereferencedOperandIntel(RegisterOperandIntel('rax')));
 
     expect(one_op_inst_deref.name, 'lea');
     expect(one_op_inst_deref.format(), 'lea [rax]');
@@ -64,13 +68,17 @@ void main() {
   });
 
   test('TwoOperandsInstructionIntel', () {
-    var two_op_inst_reg_imm = TwoOperandsInstructionIntel('mov', RegisterOperandIntel('rax'), ImmediateValueOperandIntel(1234));
+    var two_op_inst_reg_imm = TwoOperandsInstructionIntel(
+        'mov', RegisterOperandIntel('rax'), ImmediateValueOperandIntel(1234));
 
     expect(two_op_inst_reg_imm.name, 'mov');
     expect(two_op_inst_reg_imm.format(), 'mov rax, 1234');
     expect(two_op_inst_reg_imm, TypeMatcher<TwoOperandsInstructionIntel>());
 
-    var two_op_inst_deref = TwoOperandsInstructionIntel('mov', RegisterOperandIntel('rax'), DereferencedOperandIntel(RegisterOperandIntel('rax')));
+    var two_op_inst_deref = TwoOperandsInstructionIntel(
+        'mov',
+        RegisterOperandIntel('rax'),
+        DereferencedOperandIntel(RegisterOperandIntel('rax')));
 
     expect(two_op_inst_deref.name, 'mov');
     expect(two_op_inst_deref.format(), 'mov rax, [rax]');
@@ -111,7 +119,8 @@ void main() {
     a.mov(a.rax, a.deref(a.rax));
     a.mov(a.rax, a.deref(a.imm(0xFFFF)));
 
-    expect(a.build(), 'mov rax, 65535;mov rax, rbx;mov rax, [rax];mov rax, [65535]');
+    expect(a.build(),
+        'mov rax, 65535;mov rax, rbx;mov rax, [rax];mov rax, [65535]');
   });
 
   test('AsmBuilderIntel.pop', () {

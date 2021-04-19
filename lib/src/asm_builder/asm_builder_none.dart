@@ -2,7 +2,6 @@ import 'asm_builder_base.dart';
 import 'instruction.dart';
 
 class AsmBuilderNone extends AsmBuilderBase {
-
   @override
   String build() => throw UnimplementedError();
 

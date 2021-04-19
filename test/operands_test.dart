@@ -14,7 +14,6 @@ class Dereferenced extends DereferencedOperand {
 }
 
 void main() {
-
   test('RegisterOperand are formatted correctly', () {
     var rax = Register('rax');
 

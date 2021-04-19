@@ -15,53 +15,53 @@ int ksMakeVersion(int major, int minor) => ((major << 8) + minor);
 
 // Architecture type
 
-const int KS_ARCH_ARM       = 1;                // ARM architecture (including Thumb, Thumb-2)
-const int KS_ARCH_ARM64     = 2;                // ARM-64, also called AArch64
-const int KS_ARCH_MIPS      = 3;                // Mips architecture
-const int KS_ARCH_X86       = 4;                // X86 architecture (including x86 & x86-64)
-const int KS_ARCH_PPC       = 5;                // PowerPC architecture (currently unsupported)
-const int KS_ARCH_SPARC     = 6;                // Sparc architecture
-const int KS_ARCH_SYSTEMZ   = 7;                // SystemZ architecture (S390X)
-const int KS_ARCH_HEXAGON   = 8;                // Hexagon architecture
-const int KS_ARCH_EVM       = 9;                // Ethereum Virtual Machine architecture
+const int KS_ARCH_ARM = 1; // ARM architecture (including Thumb, Thumb-2)
+const int KS_ARCH_ARM64 = 2; // ARM-64, also called AArch64
+const int KS_ARCH_MIPS = 3; // Mips architecture
+const int KS_ARCH_X86 = 4; // X86 architecture (including x86 & x86-64)
+const int KS_ARCH_PPC = 5; // PowerPC architecture (currently unsupported)
+const int KS_ARCH_SPARC = 6; // Sparc architecture
+const int KS_ARCH_SYSTEMZ = 7; // SystemZ architecture (S390X)
+const int KS_ARCH_HEXAGON = 8; // Hexagon architecture
+const int KS_ARCH_EVM = 9; // Ethereum Virtual Machine architecture
 
 // Mode type
 
-const int KS_MODE_LITTLE_ENDIAN = 0;            // little-endian mode (default mode)
-const int KS_MODE_BIG_ENDIAN    = 1 << 30;      // big-endian mode
+const int KS_MODE_LITTLE_ENDIAN = 0; // little-endian mode (default mode)
+const int KS_MODE_BIG_ENDIAN = 1 << 30; // big-endian mode
 
 // arm / arm64
-const int KS_MODE_ARM           = 1 << 0;       // ARM mode
-const int KS_MODE_THUMB         = 1 << 4;       // THUMB mode (including Thumb-2)
-const int KS_MODE_V8            = 1 << 6;       // ARMv8 A32 encodings for ARM
+const int KS_MODE_ARM = 1 << 0; // ARM mode
+const int KS_MODE_THUMB = 1 << 4; // THUMB mode (including Thumb-2)
+const int KS_MODE_V8 = 1 << 6; // ARMv8 A32 encodings for ARM
 
 // mips
-const int KS_MODE_MICRO         = 1 << 4;       // MicroMips mode
-const int KS_MODE_MIPS3         = 1 << 5;       // Mips III ISA
-const int KS_MODE_MIPS32R6      = 1 << 6;       // Mips32r6 ISA
-const int KS_MODE_MIPS32        = 1 << 2;       // Mips32 ISA
-const int KS_MODE_MIPS64        = 1 << 3;       // Mips64 ISA
+const int KS_MODE_MICRO = 1 << 4; // MicroMips mode
+const int KS_MODE_MIPS3 = 1 << 5; // Mips III ISA
+const int KS_MODE_MIPS32R6 = 1 << 6; // Mips32r6 ISA
+const int KS_MODE_MIPS32 = 1 << 2; // Mips32 ISA
+const int KS_MODE_MIPS64 = 1 << 3; // Mips64 ISA
 
 // x86 / x64
-const int KS_MODE_16            = 1 << 1;       // 16-bit mode
-const int KS_MODE_32            = 1 << 2;       // 32-bit mode
-const int KS_MODE_64            = 1 << 3;       // 64-bit mode
+const int KS_MODE_16 = 1 << 1; // 16-bit mode
+const int KS_MODE_32 = 1 << 2; // 32-bit mode
+const int KS_MODE_64 = 1 << 3; // 64-bit mode
 
-// ppc 
-const int KS_MODE_PPC32         = 1 << 2;       // 32-bit mode
-const int KS_MODE_PPC64         = 1 << 3;       // 64-bit mode
-const int KS_MODE_QPX           = 1 << 4;       // Quad Processing eXtensions mode
+// ppc
+const int KS_MODE_PPC32 = 1 << 2; // 32-bit mode
+const int KS_MODE_PPC64 = 1 << 3; // 64-bit mode
+const int KS_MODE_QPX = 1 << 4; // Quad Processing eXtensions mode
 
 // sparc
-const int KS_MODE_SPARC32       = 1 << 2;       // 32-bit mode
-const int KS_MODE_SPARC64       = 1 << 3;       // 64-bit mode
-const int KS_MODE_V9            = 1 << 4;       // SparcV9 mode
+const int KS_MODE_SPARC32 = 1 << 2; // 32-bit mode
+const int KS_MODE_SPARC64 = 1 << 3; // 64-bit mode
+const int KS_MODE_V9 = 1 << 4; // SparcV9 mode
 
 // All generic errors related to input assembly >= KS_ERR_ASM
-const int KS_ERR_ASM            = 128;
+const int KS_ERR_ASM = 128;
 
 // All architecture-specific errors related to input assembly >= KS_ERR_ASM_ARCH
-const int KS_ERR_ASM_ARCH       = 512;
+const int KS_ERR_ASM_ARCH = 512;
 
 // All type of errors encountered by Keystone API.
 
@@ -123,15 +123,17 @@ const int KS_ERR_ASM_MNEMONICFAIL = 514;
 typedef KsSymResolver_t = Uint32 Function(Pointer<Utf8>, Pointer<Uint64>);
 
 // Runtime option for the Keystone engine
-const int KS_OPT_SYNTAX       = 1;    // Choose syntax for input assembly
-const int KS_OPT_SYM_RESOLVER = 2;    // Set symbol resolver callback
-
+const int KS_OPT_SYNTAX = 1; // Choose syntax for input assembly
+const int KS_OPT_SYM_RESOLVER = 2; // Set symbol resolver callback
 
 // Runtime option value (associated with ks_opt_type above)
 
-const int KS_OPT_SYNTAX_INTEL   =   1 << 0; // X86 Intel syntax - default on X86 (KS_OPT_SYNTAX).
-const int KS_OPT_SYNTAX_ATT     =   1 << 1; // X86 ATT asm syntax (KS_OPT_SYNTAX).
-const int KS_OPT_SYNTAX_NASM    =   1 << 2; // X86 Nasm syntax (KS_OPT_SYNTAX).
-const int KS_OPT_SYNTAX_MASM    =   1 << 3; // X86 Masm syntax (KS_OPT_SYNTAX) - unsupported yet.
-const int KS_OPT_SYNTAX_GAS     =   1 << 4; // X86 GNU GAS syntax (KS_OPT_SYNTAX).
-const int KS_OPT_SYNTAX_RADIX16 =   1 << 5; // All immediates are in hex format (i.e 12 is 0x12)
+const int KS_OPT_SYNTAX_INTEL =
+    1 << 0; // X86 Intel syntax - default on X86 (KS_OPT_SYNTAX).
+const int KS_OPT_SYNTAX_ATT = 1 << 1; // X86 ATT asm syntax (KS_OPT_SYNTAX).
+const int KS_OPT_SYNTAX_NASM = 1 << 2; // X86 Nasm syntax (KS_OPT_SYNTAX).
+const int KS_OPT_SYNTAX_MASM =
+    1 << 3; // X86 Masm syntax (KS_OPT_SYNTAX) - unsupported yet.
+const int KS_OPT_SYNTAX_GAS = 1 << 4; // X86 GNU GAS syntax (KS_OPT_SYNTAX).
+const int KS_OPT_SYNTAX_RADIX16 =
+    1 << 5; // All immediates are in hex format (i.e 12 is 0x12)

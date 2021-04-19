@@ -30,5 +30,4 @@ abstract class LabelOperand extends Operand {
 
   @override
   String format() => '$value';
-
 }

@@ -96,14 +96,14 @@ class TwoOperandsInstructionIntel extends Instruction {
   final Operand _op1;
   final Operand _op2;
 
-  const TwoOperandsInstructionIntel(String name, this._op1, this._op2) : super(name);
+  const TwoOperandsInstructionIntel(String name, this._op1, this._op2)
+      : super(name);
 
   @override
   String format() => '$name ${_op1.format()}, ${_op2.format()}';
 }
 
 class AsmBuilderIntel extends AsmBuilderBase {
-
   ImmediateValueOperand imm(int value) => ImmediateValueOperandIntel(value);
   // MemoryValueOperand mem(dynamic item) => MemoryValueOperandIntel(item);
   DereferencedOperand deref(Operand item) => DereferencedOperandIntel(item);

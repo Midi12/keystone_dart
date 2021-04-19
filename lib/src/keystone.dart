@@ -75,7 +75,7 @@ class Keystone implements IDisposable {
   @override
   void dispose() {
     var err = KsClose(_engine.value);
-    
+
     if (err != KS_ERR_OK) {
       throw KeystoneException(err);
     }
@@ -118,11 +118,11 @@ class Keystone implements IDisposable {
     return KsArchSupported(architecture);
   }
 
-  AssemblerResult assemble(AsmBuilderBase builder, { int baseAddress = 0 }) {
+  AssemblerResult assemble(AsmBuilderBase builder, {int baseAddress = 0}) {
     return assembleRaw(builder.build(), baseAddress: baseAddress);
   }
 
-  AssemblerResult assembleRaw(String asm, { int baseAddress = 0 }) {
+  AssemblerResult assembleRaw(String asm, {int baseAddress = 0}) {
     var data = calloc.allocate<IntPtr>(sizeOf<IntPtr>());
     var size = calloc.allocate<IntPtr>(sizeOf<IntPtr>());
     var statements = calloc.allocate<IntPtr>(sizeOf<IntPtr>());
@@ -139,7 +139,7 @@ class Keystone implements IDisposable {
       // get a view on the inner ptr
       var innerPtr = Pointer<Uint8>.fromAddress(ptr.value);
       var view = innerPtr.asTypedList(size);
-      
+
       // copy view to buffer
       for (var i = 0; i < size; i++) {
         buffer[i] = view[i];
@@ -149,11 +149,7 @@ class Keystone implements IDisposable {
     }
 
     var result = AssemblerResult(
-      buildBuffer(data, size.value),
-      size.value,
-      statements.value,
-      err
-    );
+        buildBuffer(data, size.value), size.value, statements.value, err);
 
     KsFree(data.value);
 
