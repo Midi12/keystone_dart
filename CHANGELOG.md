@@ -1,3 +1,5 @@
-## 1.0.0
+## 1.0.0-dev
 
-- Initial version, created by Stagehand
+- Initial preview
+    * Keystone bindings
+    * Assembler helpers

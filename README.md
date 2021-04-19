@@ -64,14 +64,17 @@ void main() {
 
 See `example/keystone_dart_example.dart` for a complete example.
 
+Add you own asm helper by extending `AsmBuilderBase` class. The package comes with a basic intel syntax helper.
+
 ## Prerequisites
 
 Download precompiled Keystone binaries (https://www.keystone-engine.org/download/) or build from source (https://github.com/keystone-engine/keystone).
 
 If the keystone engine compiled binary is not located in a default search folder for your operating system you must provide the path through `ks.keystonePath` variable (must have ending slash).
 
-## TODO
+## Todos
 
-* ~~Complete asm builder helper function with more asm instructions (Intel)~~
-* Add tests
+* Embed windows/linux/macos keystone shared library in package and remove `keystonePath` global variable if possible
+* Add more tests
+* Expand current Intel assembler assembler helper
 * Add more syntax/architecture asm builder helpers
