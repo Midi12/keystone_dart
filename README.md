@@ -68,7 +68,7 @@ Add you own asm helper by extending `AsmBuilderBase` class. The package comes wi
 
 ## Documentation
 
-Documentation can be found [here](https://pub.dev/documentation/keystone_dart/latest/keystone_dart/Keystone-class.html).
+Documentation can be found [here](https://pub.dev/documentation/keystone_dart/latest/).
 
 ## Prerequisites
 
