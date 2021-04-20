@@ -12,7 +12,7 @@ void main() {
   tearDownAll(() => ks.dispose());
 
   test('test version', () {
-    expect(ks.version(), ksMakeVersion(KS_VERSION_MAJOR, KS_VERSION_MINOR));
+    expect(ks.version, ksMakeVersion(KS_VERSION_MAJOR, KS_VERSION_MINOR));
   });
 
   test('test setOption', () {

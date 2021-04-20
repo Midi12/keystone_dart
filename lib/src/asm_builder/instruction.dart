@@ -1,3 +1,4 @@
+/// An abstract class representing an instruction
 abstract class Instruction {
   final String name;
 
